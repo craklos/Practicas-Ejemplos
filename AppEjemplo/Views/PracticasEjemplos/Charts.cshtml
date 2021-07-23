@@ -1,0 +1,66 @@
+﻿
+@{
+    ViewData["Title"] = "Charts";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id='grafica0'>
+    <canvas id='myChart'></canvas>
+</div>
+<script>
+    $(document).ready(function () {
+        const ctx = document.getElementById('myChart');
+        const arrayVentas = [6, 7, 9, 10, 5, 10];
+        const arrayFechas = ['22-01-2021', '23-03-2021', '25-03-2021', '01-04-2021', '06-04-2021', '20-04-2021'];
+        const myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: arrayFechas,
+                datasets: [{
+                    label: 'Ventas',
+                    data: arrayVentas,
+                    backgroundColor:
+                        'rgba(29, 53, 87, 0.9)'
+
+
+                    ,
+                    borderColor:
+                        'rgba(29, 53, 87, 1)'
+                    ,
+                    borderWidth: 3,
+                    lineTension: 0,
+                    fill: false,
+                    borderColor: 'red',
+                }]
+            },
+            options: {
+                legend: {
+                    labels: {
+                        fontColor: 'black',
+                        fontSize: 14
+                    }
+                },
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            fontColor: 'black',
+                            fontSize: 14,
+                            beginAtZero: true
+                        }
+                    }],
+                    xAxes: [{
+                        ticks: {
+                            fontColor: 'black',
+                            fontSize: 14
+
+                        }
+                    }]
+                }
+            }
+        });
+    })
+</script>
+@*Seccion de scripts que se renderizara en el layout principal*@
+@section Scripts{
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+}

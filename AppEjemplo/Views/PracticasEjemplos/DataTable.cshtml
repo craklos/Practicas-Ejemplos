@@ -1,0 +1,73 @@
+﻿
+@{
+    ViewData["Title"] = "DataTable";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="example_wrapper" class="container my-5 p-5 bg-white rounded">
+    <div class="row">
+        <div class="col">
+            <table id='datatable0' class='table table-striped' style="width: 100%;">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Folio</th>
+                        <th>Cantidad</th>
+                        <th>Venta Total</th>
+                        <th>Fecha</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>21</td>
+                        <td>FAC00187</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>2020-10-26</td>
+                    </tr>
+                    <tr>
+                        <td>11</td>
+                        <td>FAC00156</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>2020-10-26</td>
+                    </tr>
+                    <tr>
+                        <td>31</td>
+                        <td>FAC00198</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>2020-10-26</td>
+                    </tr>
+                    <tr>
+                        <td>51</td>
+                        <td>FAC00963</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>2020-10-26</td>
+                    </tr>
+                    <tr>
+                        <td>61</td>
+                        <td>FAC00966</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>2020-10-26</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+@*Seccion de scripts que se renderizara en el layout principal*@
+@section Scripts{
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap5.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.7.1/js/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.bootstrap5.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.html5.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.print.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.colVis.min.js"></script>
+}

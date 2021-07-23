@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewData["Title"] = "Sweetalert";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container my-5 p-5 bg-white rounded">
+    <div class="row">
+        <div class="col text-center">
+            <input id="shAlert" type="button" class="btn btn-outline-success btn-lg" value="Ver alerta">
+        </div>
+    </div>
+</div>
+@*Seccion de scripts que se renderizara en el layout principal*@
+@section Scripts{
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+}

@@ -1,0 +1,52 @@
+﻿@model AppEjemplo.Models.Vehiculo
+
+<div class="modal-header">
+    <h5 class="modal-title" id="staticBackdropLabel">Editar Vehiculo @TempData["ID"]</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+</div>
+<div class="modal-body">
+    <form id="form-edit" asp-action="Edit" method="post" class="row g-3">
+        <input type="hidden" asp-for="Id"/>
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="col-md-6">
+            <label asp-for="Placa" class="form-label"></label>
+            <input asp-for="Placa" type="text" class="form-control" id="placa" required>
+            <span asp-validation-for="Placa" class="text-danger"></span>
+        </div>
+        <div class="col-md-6">
+            <label asp-for="Marca" class="form-label"></label>
+            <input asp-for="Marca" class="form-control" required>
+            <span asp-validation-for="Marca" class="text-danger"></span>
+        </div>
+        <div class="col-md-6">
+            <label asp-for="Modelo" class="form-label"></label>
+            <input asp-for="Modelo" type="text" class="form-control" required>
+            <span asp-validation-for="Modelo" class="text-danger"></span>
+        </div>
+        <div class="col-md-6">
+            <label asp-for="Color" class="form-label">Color</label>
+            <input asp-for="Color" type="text" class="form-control">
+            <span asp-validation-for="Color" class="text-danger"></span>
+        </div>
+        <div class="col-md-6">
+            <label asp-for="Tipo" class="form-label">Tipo</label>
+            <input asp-for="Tipo" type="text" class="form-control" required>
+            <span asp-validation-for="Tipo" class="text-danger"></span>
+        </div>
+        <div class="col-md-6">
+            <label asp-for="NoSerie" class="form-label">Número de serie</label>
+            <input asp-for="NoSerie" type="text" class="form-control" required>
+            <span asp-validation-for="NoSerie" class="text-danger"></span>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+    <button type="submit" form="form-edit" class="btn btn-primary">Guardar</button>
+</div>
+
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}

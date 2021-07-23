@@ -1,0 +1,100 @@
+﻿@model IEnumerable<AppEjemplo.Models.Vehiculo>
+@{
+    ViewData["Title"] = "CRUD";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container p-3">
+    <div class="row">
+        <div class="col-sm-6">
+            <h1>Lista de vehiculos</h1>
+        </div>
+        <div class="col-sm-6">
+            <button type="button" asp-controller="Vehiculo" asp-action="Form_nuevo" class="btn btn-success d-block btn-form" data-value="Create" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Registrar nuevo vehiculo</button>
+        </div>
+    </div>
+    <div id="alerts"></div>
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content" id="modal-form">
+                <script>
+                    $(document).ready(function () {
+                        $(".btn-form").click(function () {
+                            $("#modal-form").load("/Vehiculo/" + $(this).data("value"));
+                        });
+                        $(".btn-delete").click(function () {
+                            //$("#alerts").load("/Vehiculo/Delete/" + $(this).data("value"));
+                            DeleteVehiculo($(this).data("value"));
+                        });
+                    });
+                </script>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="example_wrapper" class="container my-3 p-2 bg-white rounded">
+    <div class="row">
+        <div class="col">
+            @if (Model.Count() > 0)
+            {
+                <table id="tableCRUD" class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <td>@Html.DisplayNameFor(m => m.Id)</td>
+                            <td>@Html.DisplayNameFor(m => m.Placa)</td>
+                            <td>@Html.DisplayNameFor(m => m.Marca)</td>
+                            <td>@Html.DisplayNameFor(m => m.Modelo)</td>
+                            <td>@Html.DisplayNameFor(m => m.Color)</td>
+                            <td>@Html.DisplayNameFor(m => m.Tipo)</td>
+                            <td>@Html.DisplayNameFor(m => m.NoSerie)</td>
+                            <td>Acciones</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.Id</td>
+                                <td>@item.Placa</td>
+                                <td>@item.Marca</td>
+                                <td>@item.Modelo</td>
+                                <td>@item.Color</td>
+                                <td>@item.Tipo</td>
+                                <td>@item.NoSerie</td>
+                                <td>
+                                    <a asp-controller="Vehiculo" asp-action="Edit" asp-route-id="@item.Id" data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="btn btn-warning btn-form" data-value="Edit/@item.Id">Editar</a>
+                                    <a class="btn btn-danger btn-delete" data-value="@item.Id">Eliminar</a>
+                                    @*<a asp-controller="Vehiculo" asp-action="Details" asp-route-id="@item.Id" data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="btn btn-warning btn-form" data-value="Details/@item.Id">Detalles</a>*@
+                                    <a type="button" class="btn btn-success" title="Descargar PDF" asp-controller="Vehiculo" asp-action="GeneratePDF" asp-route-id="@item.Id">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
+                                            <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"></path>
+                                            <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"></path>
+                                        </svg>
+              
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+            else
+            {
+                <p>No existen registros</p>
+            }
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap5.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.7.1/js/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.bootstrap5.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.html5.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.print.min.js"></script>
+}
