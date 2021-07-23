@@ -97,7 +97,7 @@ namespace AppEjemplo.Controllers
             return new ViewAsPdf("GeneratePDF", vehiculo)
             {
                 PageSize = Rotativa.AspNetCore.Options.Size.Letter,
-                PageOrientation = Rotativa.AspNetCore.Options.Orientation.Landscape,
+                PageOrientation = Rotativa.AspNetCore.Options.Orientation.Portrait,
                 FileName = "ReporteVehiculo.pdf"
                 
             };
