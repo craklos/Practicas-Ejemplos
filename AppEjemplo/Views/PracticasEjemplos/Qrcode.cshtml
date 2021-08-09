@@ -9,43 +9,64 @@
             <div class="input-group mb-3">
                 <span class="input-group-text" id="inputGroup-sizing-lg">Texto</span>
                 <input id="text" type="text" class="form-control" aria-label="Sizing example input" arial-label="Recipient">
-                <!-- <button class="btn btn-outline-secondary" type="button" id="button-addon2">Generar QR</button> -->
+                <button class="btn btn-outline-secondary" type="button" id="button-addon2">Generar QR</button>
             </div>
         </div>
     </div>
     <center><div id="qrcode" style="width:200px; height:200px;"></div></center>
 </div>
 
-<script type="text/javascript">
-			const qrcode = new QRCode(document.getElementById("qrcode"), {
-				width : 200,
-				height : 200,
-			});
+@section Scripts{ 
+    <script type="text/javascript">
+        //Generar codigio con boton
+        $(document).ready(function () {
+            const qrcode = new QRCode(document.getElementById("qrcode"), {
+                width: 200,
+                height: 200,
+            });
 
-			function makeCode () {
-				const elText = document.getElementById("text");
+            $("#button-addon2").on('click', function (event) {
+                //Act on the event
+                const elText = document.getElementById("text");
+                if (!elText.value) {
+                    //alert("Input a text");
+                    elText.focus();
+                    return;
+                }
+                qrcode.makeCode(elText.value);
+            });
+        })
+        //Generar codigo QR sin boton solo con enter
+                //const qrcode = new QRCode(document.getElementById("qrcode"), {
+                //	width : 200,
+                //	height : 200,
+                //});
 
-				if (!elText.value) {
-					//alert("Input a text");
-					elText.focus();
-					return;
-				}
+                //function makeCode () {
+                //	const elText = document.getElementById("text");
 
-				qrcode.makeCode(elText.value);
-			}
-			// $("button-addon2").on('click', function(event) {
-			// 	/* Act on the event */
-			// 	makeCode();
-			// });
+                //	if (!elText.value) {
+                //		//alert("Input a text");
+                //		elText.focus();
+                //		return;
+                //	}
+
+                //	qrcode.makeCode(elText.value);
+                //}
+                //// $("button-addon2").on('click', function(event) {
+                //// 	/* Act on the event */
+                //// 	makeCode();
+                //// });
 
 
-			$("#text").
-				on("blur", function () {
-					makeCode();
-				}).
-				on("keydown", function (e) {
-					if (e.keyCode == 13) {
-						makeCode();
-					}
-				});
-</script>
+                //$("#text").
+                //	on("blur", function () {
+                //		makeCode();
+                //	}).
+                //	on("keydown", function (e) {
+                //		if (e.keyCode == 13) {
+                //			makeCode();
+                //		}
+                //	});
+    </script>
+} 
