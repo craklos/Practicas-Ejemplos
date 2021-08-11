@@ -11,8 +11,8 @@ namespace AppEjemplo.Controllers
 {
     public class VehiculoController : Controller
     {
-        private readonly CrudDbContext _context;
-        public VehiculoController(CrudDbContext context)
+        private readonly ApplicationDbContext _context;
+        public VehiculoController(ApplicationDbContext context)
         {
             _context = context;
         }
